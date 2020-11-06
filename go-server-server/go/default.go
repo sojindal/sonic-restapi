@@ -871,6 +871,7 @@ func ConfigVrouterVrfIdGet(w http.ResponseWriter, r *http.Request) {
         VnetName: vars["vnet_name"],
         Attr: VnetModel{
             Vnid: vnid,
+            MaxRoutes: max_routes
         },
     }
 
@@ -933,6 +934,7 @@ func ConfigVrouterVrfIdPost(w http.ResponseWriter, r *http.Request) {
     pt.Set(vnet_id_str, map[string]string{
         "vxlan_tunnel": "default_vxlan_tunnel",
         "vni": strconv.Itoa(attr.Vnid),
+        "max_routes": strconv.Itoa(attr.MaxRoutes)
         "guid": vars["vnet_name"],
     }, "SET", "")
 
